@@ -1,8 +1,8 @@
 <template>
     <div class="item">
         <div class="itemImgContainer">
-            <img src="https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg" alt="logo">
-            <!-- <img src={{ item.image }} alt="logo"> -->
+            <!-- <img src="https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg" alt="logo"> -->
+            <img :src="item.image" alt="logo">
         </div>
         <div class="itemInfo">
             <span class="itemInfoCategory">{{ item.category }}</span>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { cartItems } from '@/jsFiles/cartStore.js';
+
 export default {
 name: 'Item',
 props: {
@@ -21,7 +23,9 @@ props: {
 },
 methods: {
     addToCart() {
-        console.log("added")
+        // this.$cartContents.items.push(this.item);
+        // console.log("Item added to cart:", this.item);
+        cartItems.value.push(this.item);
     }
 }
 }
@@ -31,10 +35,10 @@ methods: {
 <style>
 .item{
     width: 200px;
-    height: auto;
+    height: 300px;
     background-color: white;
     border-radius: 5px;
-    margin: 10px;
+    /* margin: 10px; */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 
     display: flex;
@@ -46,11 +50,14 @@ methods: {
     height: 70%;
     overflow: hidden;
     border-bottom: 1px solid rgb(235, 235, 235);
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .itemImgContainer img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .itemInfo {

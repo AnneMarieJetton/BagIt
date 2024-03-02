@@ -1,10 +1,11 @@
 <template>
     <div class="itemRows">
-        <!-- Render multiple item components here -->
-        <Item v-for="(item, index) in items" :key="index" :item="item" />
+        <p class="message">{{ msg }}</p>
+        <div class="items-container">
+            <Item v-for="(item, index) in items" :key="index" :item="item" />
+        </div>
     </div>
 </template>
-
 <script>
 
 import Item from '@/components/Item.vue'; // Import the Item component
@@ -15,37 +16,12 @@ components: {
     Item // Register the Item component
 },
 props: {
-    msg: String
+    msg: String,
+    items: Array
 },
 data() {
     return {
-        items: [ /* Array of item data */
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 1', name: 'Item 1', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 2', name: 'Item 2', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 3', name: 'Item 3', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 4', name: 'Item 4', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 5', name: 'Item 5', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 6', name: 'Item 6', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 7', name: 'Item 7', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 8', name: 'Item 8', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 9', name: 'Item 9', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 10', name: 'Item 10', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 1', name: 'Item 1', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 2', name: 'Item 2', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 3', name: 'Item 3', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 4', name: 'Item 4', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 5', name: 'Item 5', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 6', name: 'Item 6', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 7', name: 'Item 7', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 8', name: 'Item 8', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 9', name: 'Item 9', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 10', name: 'Item 10', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 1', name: 'Item 1', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 2', name: 'Item 2', price: '$20' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 3', name: 'Item 3', price: '$10' },
-            { image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg", category: 'Category 4', name: 'Item 4', price: '$20' },
-            // Add more item data as needed
-        ]
+        
     };
 }
 }
@@ -55,14 +31,32 @@ data() {
 <style scoped>
 .itemRows {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next row */
-    justify-content: space-between; /* Distribute items evenly in each row */
+    flex-direction: column; /* Display items in a column layout */
+    align-items: center; /* Center align items horizontally */
     padding: 50px;
+}
+
+.message {
+    margin-bottom: 20px; /* Add some space below the message */
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%; /* Ensure items span the full width */
 }
 
 @media screen and (max-width: 768px) {
     .itemRows {
-        justify-content: center; /* Center items when screen size is smaller */
+        justify-content: center;
     }
 }
 </style>
