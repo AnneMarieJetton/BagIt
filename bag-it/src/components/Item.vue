@@ -2,11 +2,12 @@
     <div class="item">
         <div class="itemImgContainer">
             <img src="https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg" alt="logo">
+            <!-- <img src={{ item.image }} alt="logo"> -->
         </div>
         <div class="itemInfo">
-            <span class="itemInfoCategory">category</span>
-            <span class="itemInfoName">name</span>
-            <span class="itemInfoPrice">price</span>
+            <span class="itemInfoCategory">{{ item.category }}</span>
+            <span class="itemInfoName">{{ item.name }}</span>
+            <span class="itemInfoPrice">{{ item.price }}</span>
             <button @click="addToCart">ADD TO CART</button>
         </div>
     </div>

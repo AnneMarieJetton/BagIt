@@ -26,12 +26,12 @@ data() {
 methods: {
     subscribe() {
     // Check if the email is not blank
-        if (this.email.trim() !== '') {
-            // Reset email input to default text
-            this.email = '';
-            // Display an alert
-            alert('Subscribed!');
-        }
+    if (this.email.trim() !== '') {
+        // Reset email input to default text
+        this.email = '';
+        // Display an alert
+        alert('Subscribed!');
+    }
     }
 }
 }
