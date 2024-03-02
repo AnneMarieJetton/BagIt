@@ -11,6 +11,53 @@
                 <div class="NavBarInputBox">
                     <input v-model="email" type="text" placeholder="Try 'Nutella'...">
                 </div>
+                <router-link :to="{ path: '/search', query: { email: email } }" class="NavBarInputButton">
+                    <span>Search</span>
+                </router-link>
+            </div>
+
+            <router-link to="/cart" class="cartLink">
+                <img src=".\..\assets\CartIconWhite.png" alt="cart">
+                <span>Cart</span>
+            </router-link>
+        </nav>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'NavBar',
+    props: {
+        msg: String
+    },
+    data() {
+        return {
+            email: '' // Initialize email data property
+        };
+    },
+    methods: {
+        updateEmail() {
+            console.log("navbar pre: "+ this.email);
+            this.$emit('updateEmail', this.email);
+            console.log("navbar post: "+ this.email);
+        }
+    }
+}
+</script>
+
+<!-- <template>
+    <div id="navBar" class="navBar">
+        <nav class="NavBarLinks">
+            <router-link to="/" class="homeLink">
+                <div class="homeLinkContent">
+                    BagIt
+                </div>
+            </router-link>
+
+            <div class="NavBarInput">
+                <div class="NavBarInputBox">
+                    <input v-model="email" type="text" placeholder="Try 'Nutella'...">
+                </div>
                 <router-link to="/search" class="NavBarInputButton">
                     <span>Search</span>
                 </router-link>
@@ -31,7 +78,7 @@ props: {
     msg: String
 }
 }
-</script>
+</script> -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>

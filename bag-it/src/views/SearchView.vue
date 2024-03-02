@@ -1,31 +1,39 @@
   <template>
     <div class="search">
-        <NavBar/>
-        <!-- <div class="SearchBarContainer"> -->
-        <SearchBar/>
-        <!-- </div> -->
+        <NavBar @updateEmail="handleUpdateEmail" />
         <SearchMessage/>
-        <ItemColumn/>
+        <ItemColumn :msg="email" />
     </div>
   </template>
   
   <script>
-  // @ is an alias to /src
-  import NavBar from '@/components/NavBar.vue'
-  import SearchBar from '@/components/SearchBar.vue'
-  import SearchMessage from '@/components/SearchMessage.vue'
-  import ItemColumn from '@/components/ItemColumn.vue'
-  
-  export default {
+import NavBar from '@/components/NavBar.vue'
+import SearchMessage from '@/components/SearchMessage.vue'
+import ItemColumn from '@/components/ItemColumn.vue'
+import { $route } from 'vue-router'
+
+export default {
     name: 'SearchView',
     components: {
         NavBar,
-        SearchBar,
         SearchMessage,
         ItemColumn,
+    },
+    data() {
+        return {
+            email: this.$route.query.email || ''
+        };
+    },
+    methods: {
+        handleUpdateEmail(email) {
+            // Update the email data property with the value emitted from NavBar
+            console.log("searchview pre: " + email);
+            this.email = email;
+            console.log("searchview post: " + this.email);
+        }
     }
-  }
-  </script>
+}
+</script>
 
   <style>
     /* .search {
