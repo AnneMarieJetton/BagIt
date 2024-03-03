@@ -1,8 +1,6 @@
   <template>
     <div class="search">
         <NavBar @updateEmail="handleUpdateEmail" />
-        <!-- <SearchMessage/>
-        <ItemColumn :msg="email" /> -->
         <Search :msg="email"/>
     </div>
   </template>

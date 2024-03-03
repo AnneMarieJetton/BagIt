@@ -11,8 +11,13 @@
                 <div class="NavBarInputBox">
                     <input v-model="email" type="text" placeholder="Try 'Nutella'...">
                 </div>
-                <router-link :to="{ path: '/search', query: { email: email } }" class="NavBarInputButton">
+                <!-- <router-link :to="{ path: '/search', query: { email: email } }" class="NavBarInputButton">
                     <span>Search</span>
+                </router-link> -->
+                <router-link :to="{ path: '/search', query: { email: email } }" class="NavBarInputButton">
+                    <div class="NavBarInputButton" @click="performSearch">
+                        <span>Search</span>
+                    </div>
                 </router-link>
             </div>
 
@@ -40,7 +45,12 @@ export default {
             console.log("navbar pre: "+ this.email);
             this.$emit('updateEmail', this.email);
             console.log("navbar post: "+ this.email);
+        },
+
+        performSearch() {
+            this.$emit('updateEmail', this.email);
         }
+
     }
 }
 </script>
