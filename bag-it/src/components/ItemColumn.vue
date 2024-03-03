@@ -1,7 +1,7 @@
 <template>
     <div class="itemColumn">
         <Item v-for="(item, index) in items" :key="index" :item="item" />
-        <p>{{ msg }}</p>
+        <!-- <p>{{ msg }}</p> -->
     </div>
 </template>
 
@@ -23,19 +23,19 @@ export default {
         };
     
     },
-    watch: {
-        msg: {
-            immediate: true,
-            handler(newVal, oldVal) {
-                if (newVal !== oldVal) {
-                    this.fetchProductNames();
-                }
-            }
-        }
-    },
-    // mounted() {
-    //     this.fetchProductNames();
+    // watch: {
+    //     msg: {
+    //         immediate: true,
+    //         handler(newVal, oldVal) {
+    //             if (newVal !== oldVal) {
+    //                 this.fetchProductNames();
+    //             }
+    //         }
+    //     }
     // },
+    mounted() {
+        this.fetchProductNames();
+    },
     methods: {
         async fetchProductNames() {
             console.log("itemCol pre: " + this.msg);
@@ -55,11 +55,11 @@ export default {
             console.log("itemCol post: " + this.msg);
         }
     },
-    beforeRouteUpdate(to, from, next) {
-        // Call fetchProductNames whenever the route parameters change
-        this.fetchProductNames();
-        next();
-    }
+    // beforeRouteUpdate(to, from, next) {
+    //     // Call fetchProductNames whenever the route parameters change
+    //     this.fetchProductNames();
+    //     next();
+    // }
 
 }
 </script>
@@ -69,4 +69,5 @@ export default {
 
 </style>
 
-<!-- 1683 -->
+<!-- 640 2 -->
+<!-- 1683 2 -->

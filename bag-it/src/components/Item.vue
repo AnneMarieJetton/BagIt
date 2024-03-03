@@ -7,7 +7,8 @@
         <div class="itemInfo">
             <span class="itemInfoCategory">{{ item.category }}</span>
             <span class="itemInfoName">{{ item.name }}</span>
-            <span class="itemInfoPrice">{{ item.price }}</span>
+            <!-- <span class="itemInfoPrice">{{ item.price }}</span> -->
+            <span class="itemInfoPrice">${{ Price }}</span>
             <button @click="addToCart">ADD TO CART</button>
         </div>
     </div>
@@ -16,10 +17,18 @@
 <script>
 import { cartItems } from '@/jsFiles/cartStore.js';
 
+// const price = (Math.random() * (5 - 1) + 1).toFixed(2);
+
 export default {
 name: 'Item',
 props: {
     item: Object
+},
+computed: {
+    Price() {
+        const price = (Math.random() * (5 - 1) + 1).toFixed(2);
+        return price;
+    }
 },
 methods: {
     addToCart() {

@@ -1,34 +1,86 @@
 <template>
-    <div class="search">
-        <div class="searchBar">
-            <div class="searchBarInput">
-                <div class="searchBarInputBox">
-                    <input v-model="email" type="text" placeholder="Enter your email">
-                </div>
-                <div class="searchBarInputButton">
-                    <button @click="subscribe">Subscribe</button>
-                </div>
-            </div>
-        </div>
+    <div class="Search">
         <div class="searchMessage">
             <span class="searchMessageContent">
                 Unfortunately, without paying, this API only allows searching by barcode number, so that will be enough for demonstration purposes. Try "3017624010701" for Nutella, "8901764012273" for Coca Cola, or a different barcode number.
             </span>
         </div>
+        <Span class="SearchResultTitle">Results</Span>
+        <Item v-for="(item, index) in items" :key="index" :item="item" />
+        <!-- <p>{{ msg }}</p> -->
     </div>
-    
 </template>
 
 <script>
+import axios from 'axios';
+import Item from '@/components/Item.vue'
+
 export default {
     name: 'Search',
-    props: {},
-    data() {},
-    methods: {}
+    components: {
+        Item
+    },
+    props: {
+        msg: String
+    },
+    data() {
+        return {
+            items: []
+        };
+    
+    },
+    // watch: {
+    //     msg: {
+    //         immediate: true,
+    //         handler(newVal, oldVal) {
+    //             if (newVal !== oldVal) {
+    //                 this.fetchProductNames();
+    //             }
+    //         }
+    //     }
+    // },
+    mounted() {
+        this.fetchProductNames();
+    },
+    methods: {
+        async fetchProductNames() {
+            console.log("itemCol pre: " + this.msg);
+            try {
+                // const response = await axios.get('https://world.openfoodfacts.net/api/v2/product/3017624010701');
+                const response = await axios.get(`https://world.openfoodfacts.net/api/v2/product/${this.msg}`);
+                const productName = response.data.product.product_name;
+                const productImage = response.data.product.selected_images.front.display.en;
+                const productCategory = response.data.product.food_groups.substring(3);
+                this.items.push({
+                // image: "https://t4.ftcdn.net/jpg/06/24/40/73/360_F_624407356_SEawnQTYWqB73IMvpQPKcDB1CvowLUBH.jpg",
+                image: productImage,
+                category: productCategory,
+                name: productName,
+                price: '$' + (Math.random() * (5 - 1) + 1).toFixed(2)
+                });
+            } catch (error) {
+                console.error('Error fetching product names:', error);
+            }
+            console.log("itemCol post: " + this.msg);
+        }
+    },
+    // beforeRouteUpdate(to, from, next) {
+    //     // Call fetchProductNames whenever the route parameters change
+    //     this.fetchProductNames();
+    //     next();
+    // }
+
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.Search{
+    padding-top: 5%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
 .searchMessage {
     border-radius: 5px;
     /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
@@ -42,69 +94,13 @@ export default {
     justify-content: center; /* Center vertically */
 }
 
-.searchMessageTitle {
-    margin-bottom: 5px;
-    font-size: 24px;
+.SearchResultTitle {
+    /* margin-bottom: 20px; */
+    font-size: 48px;
     font-weight: bold;
 }
 
 .searchMessageContent {
     /* color: rgb(209, 209, 209); */
-}
-
-/*  */
-
-.searchBarInput {
-    /* position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    margin: 0 auto;
-    border-radius: 5px;
-    background-color: white;
-    width: auto;
-    height: 35px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.searchBarInputBox {
-    width: 70%;
-    height: 100%;
-    border: 2px solid rgb(52, 58, 0);
-    border-radius: 5px 0 0 5px;
-}
-
-.searchBarInputBox input {
-    width: 100%;
-    height: 100%;
-    padding: 5px; /* Add padding for better appearance */
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-.searchBarInputButton {
-    display: flex;
-    height: 100%;
-    width: 30%;
-    background-color: rgb(52, 58, 0);
-    border-radius: 0 5px 5px 0;
-    /* margin: 0; */
-    border: 2px solid rgb(52, 58, 0);
-    color: white;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-}
-
-.searchBarInputButton button {
-    border: none;
-    background: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    color: inherit;
-    outline: none;
 }
 </style>

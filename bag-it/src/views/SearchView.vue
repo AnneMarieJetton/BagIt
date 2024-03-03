@@ -1,8 +1,9 @@
   <template>
     <div class="search">
         <NavBar @updateEmail="handleUpdateEmail" />
-        <SearchMessage/>
-        <ItemColumn :msg="email" />
+        <!-- <SearchMessage/>
+        <ItemColumn :msg="email" /> -->
+        <Search :msg="email"/>
     </div>
   </template>
   
@@ -10,14 +11,16 @@
 import NavBar from '@/components/NavBar.vue'
 import SearchMessage from '@/components/SearchMessage.vue'
 import ItemColumn from '@/components/ItemColumn.vue'
+import Search from '@/components/Search.vue'
 import { $route } from 'vue-router'
 
 export default {
     name: 'SearchView',
     components: {
         NavBar,
-        SearchMessage,
-        ItemColumn,
+        // SearchMessage,
+        // ItemColumn,
+        Search,
     },
     data() {
         return {
