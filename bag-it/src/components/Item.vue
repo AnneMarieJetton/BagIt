@@ -52,6 +52,7 @@ methods: {
 
     display: flex;
     flex-direction: column;
+    margin: 5px;
 }
 
 .itemImgContainer{

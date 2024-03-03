@@ -2,6 +2,7 @@
     <div class="search">
         <NavBar @updateEmail="handleUpdateEmail" />
         <Search :msg="email"/>
+        <!-- <ContactUs/> -->
     </div>
   </template>
   
@@ -11,6 +12,7 @@ import SearchMessage from '@/components/SearchMessage.vue'
 import ItemColumn from '@/components/ItemColumn.vue'
 import Search from '@/components/Search.vue'
 import { $route } from 'vue-router'
+import ContactUs from '@/components/ContactUs.vue'
 
 export default {
     name: 'SearchView',
@@ -19,6 +21,7 @@ export default {
         // SearchMessage,
         // ItemColumn,
         Search,
+        ContactUs,
     },
     data() {
         return {
@@ -36,14 +39,5 @@ export default {
 }
 </script>
 
-  <style>
-    /* .search {
-
-    }
-
-    .SearchBarContainer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    } */
+  <style scoped>
   </style>

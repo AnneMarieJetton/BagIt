@@ -41,6 +41,10 @@
   padding-left: 20%;
   padding-right: 20%;
   padding-top: 20px;
+
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .cart-items-container {

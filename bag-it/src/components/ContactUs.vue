@@ -30,7 +30,9 @@ props: {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .contactUs{
-    position: relative;
+    /* position: absolute;
+    bottom: 0; */
+
     width: 100%;
     height: auto;
     background-color: rgb(52, 58, 0);
