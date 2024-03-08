@@ -1,3 +1,3 @@
 # BagIt
 
-This project has not yet been migrated from the previous github account.
+<h1>Welcome to the Bagit project!</h1>
